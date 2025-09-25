@@ -1,4 +1,4 @@
-# bank-aggregator
+# Bank Aggregator app
 Spring Boot application simulating aggregation of multiple accounts and transactions.   
 - RESTful API with Swagger documentation
 - MySQL + JPA/Hibernate persistence
