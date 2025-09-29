@@ -5,6 +5,7 @@ import exception.UserNotFoundException;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import repository.UserRepository;
 
 import java.util.UUID;
@@ -18,6 +19,7 @@ public class UserService {
     @Autowired
     private VaultEncryptionService vaultEncryptionService;
 
+    @Transactional
     public User userRegistration(String name,
                                  String surname,
                                  String email,
@@ -37,6 +39,7 @@ public class UserService {
 
     };
 
+    @Transactional(readOnly = true)
     public User getUserById(UUID id){
 
         User user = userRepository.findById(id)
