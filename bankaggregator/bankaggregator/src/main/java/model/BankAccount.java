@@ -1,5 +1,6 @@
 package model;
 
+import enums.BankAccountStatus;
 import enums.BankAccountType;
 import jakarta.persistence.*;
 
@@ -18,6 +19,10 @@ public class BankAccount {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private BankAccountType bankAccountType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private BankAccountStatus bankAccountStatus;
 
     @Column(nullable = false)
     private BigDecimal balance;
@@ -43,6 +48,12 @@ public class BankAccount {
     }
     public void setBankAccountType(BankAccountType bankAccountType) {
         this.bankAccountType = bankAccountType;
+    }
+    public BankAccountStatus getBankAccountStatus() {
+        return bankAccountStatus;
+    }
+    public void setBankAccountStatus(BankAccountStatus bankAccountStatus) {
+        this.bankAccountStatus = bankAccountStatus;
     }
     public BigDecimal getBalance() {
         return balance;

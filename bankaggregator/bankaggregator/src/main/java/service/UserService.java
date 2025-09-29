@@ -1,6 +1,7 @@
 package service;
 
 import enums.DocumentIdType;
+import exception.ExistingUserException;
 import exception.UserNotFoundException;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class UserService {
                                  String nationality,
                                  DocumentIdType documentIdType,
                                  String documentIdNumber){
+
+        if(userRepository.existsByNameAndSurname(name, surname)){
+            throw new ExistingUserException(name, surname);
+        }
+
         User user = new User();
         user.setName(name);
         user.setSurname(surname);

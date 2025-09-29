@@ -17,5 +17,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     Optional<User> findByDocumentIdNumber(String documentIdNumber);
 
+    boolean existsByNameAndSurname(String name, String surname);
 
 }

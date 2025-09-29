@@ -1,7 +1,9 @@
 package service;
 
+import enums.BankAccountStatus;
 import enums.BankAccountType;
-import exception.AccountNotFoundException;
+import exception.BankAccountNotFoundException;
+import exception.DuplicateAccountTypeException;
 import exception.UserNotFoundException;
 import model.BankAccount;
 import model.User;
@@ -36,6 +38,10 @@ public class BankAccountService {
             throw new UserNotFoundException(userId);
         }
 
+        if(bankAccountRepository.existsByUserIdAndBankAccountType(userId, bankAccountType)){
+            throw new DuplicateAccountTypeException(userId, bankAccountType);
+        }
+
         User user = userOpt.get();
 
         BankAccount bankAccount = new BankAccount();
@@ -43,7 +49,7 @@ public class BankAccountService {
         bankAccount.setUser(user);
         bankAccount.setBalance(initialBalance);
         bankAccount.setBankAccountType(bankAccountType);
-
+        bankAccount.setBankAccountStatus(BankAccountStatus.ACTIVE);
         String iban = generateFakeIban();
         String swift = generateFakeSwift();
 
@@ -54,12 +60,40 @@ public class BankAccountService {
 
     }
 
+    //Generic account status update method
+    @Transactional
+    public BankAccount updateAccountStatus(UUID accountId, BankAccountStatus bankAccountStatus){
+
+        BankAccount account = bankAccountRepository.findById(accountId)
+                        .orElseThrow(() -> new BankAccountNotFoundException(accountId));
+
+        account.setBankAccountStatus(bankAccountStatus);
+        return bankAccountRepository.save(account);
+
+    }
+
+    //Account status update methods by state
+    @Transactional
+    public BankAccount blockAccount(UUID accountId) {
+        return updateAccountStatus(accountId, BankAccountStatus.BLOCKED);
+    }
+
+    @Transactional
+    public BankAccount closeAccount(UUID accountId) {
+        return updateAccountStatus(accountId, BankAccountStatus.CLOSED);
+    }
+
+    @Transactional
+    public BankAccount reactivateAccount(UUID accountId) {
+        return updateAccountStatus(accountId, BankAccountStatus.ACTIVE);
+    }
+
     @Transactional(readOnly = true)
     public BankAccount getAccountById(UUID accountId){
         Optional<BankAccount> accountOptional = bankAccountRepository.findById(accountId);
 
         if(accountOptional.isEmpty()){
-            throw new AccountNotFoundException(accountId);
+            throw new BankAccountNotFoundException(accountId);
         }
 
         BankAccount bankAccount = accountOptional.get();

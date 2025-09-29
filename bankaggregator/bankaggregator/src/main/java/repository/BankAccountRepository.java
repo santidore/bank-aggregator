@@ -1,5 +1,6 @@
 package repository;
 
+import enums.BankAccountType;
 import model.BankAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,6 @@ public interface BankAccountRepository extends JpaRepository<BankAccount, UUID> 
 
     List<BankAccount> findByUserId(UUID userId);
 
-
+    boolean existsByUserIdAndBankAccountType(UUID userId, BankAccountType bankAccountType);
 
 }
