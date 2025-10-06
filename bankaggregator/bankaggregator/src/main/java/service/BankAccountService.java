@@ -1,5 +1,6 @@
 package service;
 
+import dto.CreateBankAccountRequest;
 import enums.BankAccountStatus;
 import enums.BankAccountType;
 import exception.BankAccountNotFoundException;
@@ -31,15 +32,15 @@ public class BankAccountService {
     private VaultEncryptionService vaultEncryptionService;
 
     @Transactional
-    public BankAccount createBankAccount(UUID userId, BigDecimal initialBalance, BankAccountType bankAccountType){
+    public BankAccount createBankAccount(CreateBankAccountRequest createBankAccountRequest){
 
-        Optional<User> userOpt = userRepository.findById(userId);
+        Optional<User> userOpt = userRepository.findById(createBankAccountRequest.userId());
         if(userOpt.isEmpty()) {
-            throw new UserNotFoundException(userId);
+            throw new UserNotFoundException(createBankAccountRequest.userId());
         }
 
-        if(bankAccountRepository.existsByUserIdAndBankAccountType(userId, bankAccountType)){
-            throw new DuplicateAccountTypeException(userId, bankAccountType);
+        if(bankAccountRepository.existsByUserIdAndBankAccountType(createBankAccountRequest.userId(), createBankAccountRequest.bankAccountType())){
+            throw new DuplicateAccountTypeException(createBankAccountRequest.userId(), createBankAccountRequest.bankAccountType());
         }
 
         User user = userOpt.get();
@@ -47,8 +48,8 @@ public class BankAccountService {
         BankAccount bankAccount = new BankAccount();
 
         bankAccount.setUser(user);
-        bankAccount.setBalance(initialBalance);
-        bankAccount.setBankAccountType(bankAccountType);
+        bankAccount.setBalance(createBankAccountRequest.initialBalance());
+        bankAccount.setBankAccountType(createBankAccountRequest.bankAccountType());
         bankAccount.setBankAccountStatus(BankAccountStatus.ACTIVE);
         String iban = generateFakeIban();
         String swift = generateFakeSwift();
