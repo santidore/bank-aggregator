@@ -1,15 +1,19 @@
 package service;
 
+import dto.BankAccountSummaryResponse;
 import dto.CreateUserRequest;
 import enums.DocumentIdType;
 import exception.ExistingUserException;
 import exception.UserNotFoundException;
+import model.BankAccount;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repository.UserRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -52,6 +56,33 @@ public class UserService {
         );
 
         return user;
+    }
+
+    @Transactional
+    public void deleteUser(UUID userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new UserNotFoundException(userId);
+        }
+        userRepository.deleteById(userId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<BankAccountSummaryResponse> getUserAccounts(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException(userId));
+
+        List<BankAccountSummaryResponse> accountResponses = new ArrayList<>();
+
+        for (BankAccount account : user.getAccounts()) {
+            BankAccountSummaryResponse response = new BankAccountSummaryResponse(
+                    account.getAccountId(),
+                    account.getBankAccountType(),
+                    account.getBankAccountStatus()
+            );
+            accountResponses.add(response);
+        }
+
+        return accountResponses;
     }
 
 }

@@ -65,5 +65,15 @@ public class UserController {
         return ResponseEntity.ok(userResponse);
     }
 
+    @GetMapping("/{id}/accounts")
+    public ResponseEntity<List<BankAccountSummaryResponse>> getUserAccounts(@PathVariable UUID id) {
+        List<BankAccountSummaryResponse> accounts = userService.getUserAccounts(id);
+        return ResponseEntity.ok(accounts);
+    }
+
+    @DeleteMapping("/{id}") public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
