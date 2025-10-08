@@ -1,4 +1,4 @@
-package service;
+package com.example.bankaggregator;
 
 import dto.BankAccountSummaryResponse;
 import dto.CreateUserRequest;
@@ -11,6 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import repository.UserRepository;
+import service.UserService;
+import service.VaultEncryptionService;
 
 import java.util.*;
 
