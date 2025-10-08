@@ -1,5 +1,6 @@
 package service;
 
+import dto.CreateUserRequest;
 import enums.DocumentIdType;
 import exception.ExistingUserException;
 import exception.UserNotFoundException;
@@ -21,25 +22,20 @@ public class UserService {
     private VaultEncryptionService vaultEncryptionService;
 
     @Transactional
-    public User userRegistration(String name,
-                                 String surname,
-                                 String email,
-                                 String nationality,
-                                 DocumentIdType documentIdType,
-                                 String documentIdNumber){
+    public User userRegistration(CreateUserRequest createUserRequest){
 
-        if(userRepository.existsByNameAndSurname(name, surname)){
-            throw new ExistingUserException(name, surname);
+        if(userRepository.existsByNameAndSurname(createUserRequest.name(), createUserRequest.surname())){
+            throw new ExistingUserException(createUserRequest.name(), createUserRequest.surname());
         }
 
         User user = new User();
-        user.setName(name);
-        user.setSurname(surname);
-        user.setEmail(email);
-        user.setNationality(nationality);
-        user.setDocumentIdType(documentIdType);
+        user.setName(createUserRequest.name());
+        user.setSurname(createUserRequest.surname());
+        user.setEmail(createUserRequest.email());
+        user.setNationality(createUserRequest.nationality());
+        user.setDocumentIdType(createUserRequest.documentIdType());
 
-        user.setDocumentIdNumber(vaultEncryptionService.encrypt(documentIdNumber));
+        user.setDocumentIdNumber(vaultEncryptionService.encrypt(createUserRequest.documentIdNumber()));
 
         return userRepository.save(user);
 
