@@ -1,8 +1,11 @@
 package dto;
+import enums.BankAccountStatus;
+import enums.BankAccountType;
+
 import java.util.UUID;
 
 public record BankAccountSummaryResponse(
         UUID accountId,
-        String bankAccountType,
-        String bankAccountStatus
+        BankAccountType bankAccountType,
+        BankAccountStatus bankAccountStatus
 ) {}

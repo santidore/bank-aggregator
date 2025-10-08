@@ -3,6 +3,7 @@ package model;
 import enums.DocumentIdType;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,8 +25,9 @@ public class User {
     @Column(unique = true, nullable = false)
     private String documentIdNumber;
 
-    @OneToMany(mappedBy = "user")
-    private List<BankAccount> accounts;
+    //Cascade all operations from User to BankAccounts and remove orphans automatically. Initialized to avoid null references.
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BankAccount> accounts = new ArrayList<>();
 
     public UUID getId() {
         return id;
