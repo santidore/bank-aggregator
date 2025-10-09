@@ -1,4 +1,4 @@
-package enums;
+package com.example.bankaggregator.enums;
 
 public enum BankAccountStatus {
     ACTIVE,

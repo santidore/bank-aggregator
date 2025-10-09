@@ -1,6 +1,6 @@
-package dto;
+package com.example.bankaggregator.dto;
 
-import enums.BankAccountType;
+import com.example.bankaggregator.enums.BankAccountType;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 

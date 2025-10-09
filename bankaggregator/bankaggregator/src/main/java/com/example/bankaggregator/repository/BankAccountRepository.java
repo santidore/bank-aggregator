@@ -1,7 +1,7 @@
-package repository;
+package com.example.bankaggregator.repository;
 
-import enums.BankAccountType;
-import model.BankAccount;
+import com.example.bankaggregator.enums.BankAccountType;
+import com.example.bankaggregator.model.BankAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

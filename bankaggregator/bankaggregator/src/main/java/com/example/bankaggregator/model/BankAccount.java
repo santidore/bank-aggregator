@@ -1,7 +1,7 @@
-package model;
+package com.example.bankaggregator.model;
 
-import enums.BankAccountStatus;
-import enums.BankAccountType;
+import com.example.bankaggregator.enums.BankAccountStatus;
+import com.example.bankaggregator.enums.BankAccountType;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;

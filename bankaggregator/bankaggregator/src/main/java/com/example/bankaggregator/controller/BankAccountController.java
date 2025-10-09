@@ -1,14 +1,14 @@
-package controller;
+package com.example.bankaggregator.controller;
 
-import dto.BankAccountDetailResponse;
-import dto.BankAccountSummaryResponse;
-import dto.CreateBankAccountRequest;
-import model.BankAccount;
+import com.example.bankaggregator.dto.BankAccountDetailResponse;
+import com.example.bankaggregator.dto.BankAccountSummaryResponse;
+import com.example.bankaggregator.dto.CreateBankAccountRequest;
+import com.example.bankaggregator.model.BankAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.BankAccountService;
+import com.example.bankaggregator.service.BankAccountService;
 
 import java.util.ArrayList;
 import java.util.List;

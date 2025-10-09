@@ -1,7 +1,7 @@
-package dto;
+package com.example.bankaggregator.dto;
 
-import enums.BankAccountStatus;
-import enums.BankAccountType;
+import com.example.bankaggregator.enums.BankAccountStatus;
+import com.example.bankaggregator.enums.BankAccountType;
 
 import java.math.BigDecimal;
 import java.util.UUID;

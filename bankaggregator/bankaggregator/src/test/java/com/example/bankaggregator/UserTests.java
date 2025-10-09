@@ -1,18 +1,20 @@
 package com.example.bankaggregator;
 
-import dto.BankAccountSummaryResponse;
-import dto.CreateUserRequest;
-import enums.DocumentIdType;
-import exception.ExistingUserException;
-import exception.UserNotFoundException;
-import model.BankAccount;
-import model.User;
+import com.example.bankaggregator.dto.BankAccountSummaryResponse;
+import com.example.bankaggregator.dto.CreateUserRequest;
+import com.example.bankaggregator.enums.BankAccountStatus;
+import com.example.bankaggregator.enums.BankAccountType;
+import com.example.bankaggregator.enums.DocumentIdType;
+import com.example.bankaggregator.exception.ExistingUserException;
+import com.example.bankaggregator.exception.UserNotFoundException;
+import com.example.bankaggregator.model.BankAccount;
+import com.example.bankaggregator.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
-import repository.UserRepository;
-import service.UserService;
-import service.VaultEncryptionService;
+import com.example.bankaggregator.repository.UserRepository;
+import com.example.bankaggregator.service.UserService;
+import com.example.bankaggregator.service.VaultEncryptionService;
 
 import java.util.*;
 
@@ -144,13 +146,13 @@ class UserServiceTest {
         User user = new User();
         BankAccount account1 = new BankAccount();
         account1.setAccountId(UUID.randomUUID());
-        account1.setBankAccountType(enums.BankAccountType.CHECKING);
-        account1.setBankAccountStatus(enums.BankAccountStatus.ACTIVE);
+        account1.setBankAccountType(BankAccountType.CHECKING);
+        account1.setBankAccountStatus(BankAccountStatus.ACTIVE);
 
         BankAccount account2 = new BankAccount();
         account2.setAccountId(UUID.randomUUID());
-        account2.setBankAccountType(enums.BankAccountType.SAVINGS);
-        account2.setBankAccountStatus(enums.BankAccountStatus.BLOCKED);
+        account2.setBankAccountType(BankAccountType.SAVINGS);
+        account2.setBankAccountStatus(BankAccountStatus.BLOCKED);
 
         List<BankAccount> accounts = Arrays.asList(account1, account2);
         user.setAccounts(accounts);

@@ -1,6 +1,6 @@
-package dto;
+package com.example.bankaggregator.dto;
 
-import enums.DocumentIdType;
+import com.example.bankaggregator.enums.DocumentIdType;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

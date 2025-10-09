@@ -1,20 +1,18 @@
-package service;
+package com.example.bankaggregator.service;
 
-import dto.CreateBankAccountRequest;
-import enums.BankAccountStatus;
-import enums.BankAccountType;
-import exception.BankAccountNotFoundException;
-import exception.DuplicateAccountTypeException;
-import exception.UserNotFoundException;
-import model.BankAccount;
-import model.User;
+import com.example.bankaggregator.dto.CreateBankAccountRequest;
+import com.example.bankaggregator.enums.BankAccountStatus;
+import com.example.bankaggregator.exception.BankAccountNotFoundException;
+import com.example.bankaggregator.exception.DuplicateAccountTypeException;
+import com.example.bankaggregator.exception.UserNotFoundException;
+import com.example.bankaggregator.model.BankAccount;
+import com.example.bankaggregator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import repository.BankAccountRepository;
-import repository.UserRepository;
+import com.example.bankaggregator.repository.BankAccountRepository;
+import com.example.bankaggregator.repository.UserRepository;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

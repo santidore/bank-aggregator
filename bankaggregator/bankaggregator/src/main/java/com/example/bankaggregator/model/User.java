@@ -1,6 +1,6 @@
-package model;
+package com.example.bankaggregator.model;
 
-import enums.DocumentIdType;
+import com.example.bankaggregator.enums.DocumentIdType;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

@@ -1,19 +1,18 @@
-package controller;
+package com.example.bankaggregator.controller;
 
-import dto.BankAccountSummaryResponse;
-import dto.CreateUserRequest;
-import dto.CreateUserResponse;
-import dto.GetUserResponse;
-import model.User;
+import com.example.bankaggregator.dto.BankAccountSummaryResponse;
+import com.example.bankaggregator.dto.CreateUserRequest;
+import com.example.bankaggregator.dto.CreateUserResponse;
+import com.example.bankaggregator.dto.GetUserResponse;
+import com.example.bankaggregator.model.User;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.UserService;
+import com.example.bankaggregator.service.UserService;
 
 import java.util.List;
 import java.util.UUID;
-
 
 @RestController
 @RequestMapping("/api/users")

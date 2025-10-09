@@ -1,4 +1,4 @@
-package dto;
+package com.example.bankaggregator.dto;
 
 import java.util.List;
 import java.util.UUID;

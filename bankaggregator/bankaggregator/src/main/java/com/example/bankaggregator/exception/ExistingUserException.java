@@ -1,4 +1,4 @@
-package exception;
+package com.example.bankaggregator.exception;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

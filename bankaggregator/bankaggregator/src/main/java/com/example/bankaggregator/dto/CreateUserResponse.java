@@ -1,4 +1,4 @@
-package dto;
+package com.example.bankaggregator.dto;
 import java.util.UUID;
 
 public record CreateUserResponse(

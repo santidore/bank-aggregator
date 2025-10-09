@@ -1,16 +1,15 @@
-package service;
+package com.example.bankaggregator.service;
 
-import dto.BankAccountSummaryResponse;
-import dto.CreateUserRequest;
-import enums.DocumentIdType;
-import exception.ExistingUserException;
-import exception.UserNotFoundException;
-import model.BankAccount;
-import model.User;
+import com.example.bankaggregator.dto.BankAccountSummaryResponse;
+import com.example.bankaggregator.dto.CreateUserRequest;
+import com.example.bankaggregator.exception.ExistingUserException;
+import com.example.bankaggregator.exception.UserNotFoundException;
+import com.example.bankaggregator.model.BankAccount;
+import com.example.bankaggregator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import repository.UserRepository;
+import com.example.bankaggregator.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;

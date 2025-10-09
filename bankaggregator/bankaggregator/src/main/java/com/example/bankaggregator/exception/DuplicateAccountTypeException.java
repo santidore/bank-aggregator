@@ -1,6 +1,6 @@
-package exception;
+package com.example.bankaggregator.exception;
 
-import enums.BankAccountType;
+import com.example.bankaggregator.enums.BankAccountType;
 
 import java.util.UUID;
 

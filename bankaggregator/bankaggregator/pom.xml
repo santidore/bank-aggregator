@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>bankaggregator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bankaggregator</name>
+	<name>bank-aggregator</name>
 	<description>Bank Aggregator project for personal learning</description>
 	<url/>
 	<licenses>
@@ -51,6 +51,7 @@
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
+			<version>8.1.0</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>

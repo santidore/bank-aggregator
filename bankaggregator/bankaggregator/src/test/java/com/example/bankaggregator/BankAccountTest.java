@@ -1,21 +1,23 @@
 package service;
 
-import dto.CreateBankAccountRequest;
-import enums.BankAccountStatus;
-import enums.BankAccountType;
-import exception.BankAccountNotFoundException;
-import exception.DuplicateAccountTypeException;
-import exception.UserNotFoundException;
-import model.BankAccount;
-import model.User;
+import com.example.bankaggregator.dto.CreateBankAccountRequest;
+import com.example.bankaggregator.enums.BankAccountStatus;
+import com.example.bankaggregator.enums.BankAccountType;
+import com.example.bankaggregator.exception.BankAccountNotFoundException;
+import com.example.bankaggregator.exception.DuplicateAccountTypeException;
+import com.example.bankaggregator.exception.UserNotFoundException;
+import com.example.bankaggregator.model.BankAccount;
+import com.example.bankaggregator.model.User;
+import com.example.bankaggregator.service.BankAccountService;
+import com.example.bankaggregator.service.VaultEncryptionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.BankAccountRepository;
-import repository.UserRepository;
+import com.example.bankaggregator.repository.BankAccountRepository;
+import com.example.bankaggregator.repository.UserRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
